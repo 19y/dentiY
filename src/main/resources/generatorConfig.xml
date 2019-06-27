@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!--加载驱动jar包 修改自己的位置 -->
+	<classPathEntry
+		location="D:\study_need\repository\repositoru-2019-5-9\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar" />
+
+
+	<!--上下文的配置 -->
+	<context id="magicBookTables" targetRuntime="MyBatis3">
+
+		<!--生成序列化的接口 -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+
+		<!--生成toString方法 -->
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+		<!--连接配置 修改的自己的数据库 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/test" userId="root"
+			password="">
+		</jdbcConnection>
+
+		<!--关于小数的映射类型 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!--Java Bean 记得修改包名 -->
+		<javaModelGenerator
+			targetPackage="com.magicBook.cms.domain" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+
+	
+
+		<!--JavaBean对应Mapper.xml文件 -->
+		<sqlMapGenerator targetPackage="mappers"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		
+			<!--JavaBean数据库操作的DAO接口文件 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.magicBook.cms.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- <table schema="" tableName="leave_message" domainObjectName="LeaveMessage"/>	 -->
+		<table schema="" tableName="exam_deity" domainObjectName="Deity"/>	
+		<!-- <table schema="" tableName="cms_article_tag" domainObjectName="ArticleTag"/>	
+ -->
+
+		<!-- <table schema="" tableName="cms_user" domainObjectName="Users"/> -->
+		 
+		<!-- <table schema="" tableName="wk_x1_brand" domainObjectName="Wkx1Brand" />
+		<table schema="" tableName="wk_x1_good" domainObjectName="Wkx1Good" />
+		<table schema="" tableName="wk_x1_kind" domainObjectName="Wkx1Kind" /> -->
+<!-- 		<table schema="" tableName="cms_article" domainObjectName="Article" />
+		<table schema="" tableName="cms_category" domainObjectName="Category" />
+		<table schema="" tableName="cms_channel" domainObjectName="Channel" />
+		<table schema="" tableName="cms_settings" domainObjectName="Settings" />
+		<table schema="" tableName="cms_slide" domainObjectName="Slide" /> -->
+
+
+
+	</context>
+</generatorConfiguration>
